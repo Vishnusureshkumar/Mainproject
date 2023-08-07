@@ -1,0 +1,53 @@
+{% include 'base.html' %}
+{% include 'adminnav.html' %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+
+    <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add User</h2>
+        <div class="mb-3">
+          <label for="exampleInputFirstName" class="form-label">First Name</label>
+          <input name="firstname" required type="text" class="form-control" id="exampleInputName">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputLastName" class="form-label">Last Name</label>
+          <input name="lastname" required type="text" class="form-control" id="exampleInputName">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputuserName" class="form-label">User Name</label>
+            <input name="username" required type="text" class="form-control" id="exampleInputName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputpassword" class="form-label">Email</label>
+            <input name="email" required  type="email" class="form-control" >
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputuserName" class="form-label">password</label>
+            <input name="password1" required type="text" class="form-control" id="exampleInputName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputuserName" class="form-label">Confirm Password</label>
+            <input name="password2" required type="text" class="form-control" id="exampleInputName">
+          </div>
+        
+        {% comment %} <div class="mb-3">
+            <label for="exampleInputimage" class="form-label">image</label>
+            <input name="image" required type="file" class="form-control" id="exampleInputimage">
+          </div> {% endcomment %}
+          
+        <button type="submit" class="btn btn-success">Add user</button>
+      </form>
+      {% for msg in messages %}
+      {{msg}}
+      {% endfor %}
+
+      <br>
+      <br>
+</div>
+{% endblock content %}
+{% include 'footer.html' %}
