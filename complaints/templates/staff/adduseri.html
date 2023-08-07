@@ -1,24 +1,20 @@
 {% include 'base.html' %}
-{% include 'adminnav.html' %}
-{% load crispy_forms_tags %}         
 
+{% include 'staffdash.html' %}
+{% load crispy_forms_tags %}        
 
 
 {% block content %}
-  
-
-    <!--Register--> 
-    <div class="container w-50 my-5">
-        <h1 class="text-center">Registration Form</h1>
-        <form  method="POST">
-          {% csrf_token %}
-            {{ register_form|crispy }}                    
-        <br>    <button class="form-control btn btn-primary" type="submit">Signup</button>
-        </form>
+<div class="container w-50 my-5">
+  <h1 class="text-center">Registration Form</h1>
+  <form  method="POST">
+    {% csrf_token %}
+      {{ register_form|crispy }}                    
+  <br>    <button class="form-control btn btn-primary" type="submit">Signup</button>
+  </form>
 {% comment %} <div class="container mt-5">
-
     <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+      {% csrf_token %}
         <h2>Add User</h2>
         <div class="mb-3">
           <label for="exampleInputFirstName" class="form-label">First Name</label>
@@ -44,14 +40,14 @@
           <div class="mb-3">
             <label for="exampleInputuserName" class="form-label">Confirm Password</label>
             <input name="password2" required type="text" class="form-control" id="exampleInputName">
-          </div> {% endcomment %}
+          </div>
         
         {% comment %} <div class="mb-3">
             <label for="exampleInputimage" class="form-label">image</label>
             <input name="image" required type="file" class="form-control" id="exampleInputimage">
           </div> {% endcomment %}
-          
-        {% comment %} <button type="submit" class="btn btn-success">Add user</button> {% endcomment %}
+           
+        <button type="submit" class="btn btn-success">Add user</button>
       </form>
       {% for msg in messages %}
       {{msg}}
@@ -59,6 +55,6 @@
 
       <br>
       <br>
-</div>
+{% comment %} </div> {% endcomment %}
 {% endblock content %}
 {% include 'footer.html' %}

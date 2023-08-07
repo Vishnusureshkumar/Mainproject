@@ -25,8 +25,11 @@ urlpatterns = [
     path('addstaff/', Addstaff, name='addstaff'),
     path('addservice/', Addservice, name='addservice'),
     path('adduser/', Adduser, name='adduser'),
+    path('managestaff/', views.Managestaff, name='managestaff'),
+    path('manageuser/', views.Manageusers, name='manageuser'),
+    path('viewcomp/', views.Viewcomp, name='viewcomp'),
+    path('viewstatus/', views.viewstatuses, name='viewstatuses'),
+    path('adduseri/', views.Adduseri, name='adduseri'),
     
-    
-     
 ]
 

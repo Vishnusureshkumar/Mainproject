@@ -96,10 +96,11 @@ def Adduser(request):
             user=form.save()
             login(request,user)
             messages.success(request,"signup Successfull.")
-            return redirect('logi')
-    messages.error(request,"unsuccessfull registration.invalid information")
+            return redirect('adduser')
+        else:
+            messages.error(request,"unsuccessfull registration.invalid information")
     form = NewUserForm()
-    return render(request=request, template_name="user/adduser.html", context={"register_form":form})
+    return render(request=request, template_name="admin/adduser.html", context={"register_form":form})
         
    
         
@@ -212,8 +213,33 @@ def Logout_user(request):
 
 #admin side
 
+def Addservice(request):
+    return render(request,'admin/addservice.html')
+
 def Addstaff(request):
     return render(request,'admin/addstaff.html')
 
-def Addservice(request):
-    return render(request,'admin/addservice.html')
+def Managestaff(request):
+    return render(request,'admin/managestaff.html')
+
+def Manageusers(request):
+    return render(request,'admin/manageusers.html')
+
+def Viewcomp(request):
+    return render(request,'admin/viewcomp.html')
+
+def viewstatuses(request):
+    return render(request,'admin/viewstatuses.html')
+
+def Adduseri(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            login(request,user)
+            messages.success(request,"signup Successfull.")
+            return redirect('adduseri')
+    messages.error(request,"unsuccessfull registration.invalid information")
+    form = NewUserForm()
+    return render(request=request, template_name="staff/adduseri.html", context={"register_form":form})
+    

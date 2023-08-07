@@ -22,9 +22,11 @@
             Services
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'adduser' %}">Manage User</a></li>
-            <li><a class="dropdown-item" href="{% url 'loggvt' %}">Manage Resident staff</a></li>
-            <li><a class="dropdown-item" href="{% url 'logi' %}">Member</a></li>
+            <li><a class="dropdown-item" href="{% url 'adduser' %}">Add User</a></li>
+            <li><a class="dropdown-item" href="{% url 'manageuser' %}">Manage User</a></li>
+            <li><a class="dropdown-item" href="{% url 'addstaff' %}">Add staff</a></li>
+            <li><a class="dropdown-item" href="{% url 'managestaff' %}">Manage Staff</a></li>
+            <li><a class="dropdown-item" href="{% url 'addservice' %}">Add Service</a></li>
             </ul>
           </li>
           {% if request.user.is_staff %}
