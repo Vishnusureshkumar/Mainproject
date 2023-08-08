@@ -6,7 +6,7 @@
 <div class="glass-container" ><br><br><br>
   <form class="glass-form" method="post">
       {% csrf_token %}
-    <h1>Enter your Feedback</h1>
+    <h1 class="text-center">Please Submit Your Feedback</h1>
     <input type="text" placeholder="Enter Complaint Subject" name="feed_sub">
     <input type="text" placeholder="Enter your Feedback" name="feed_description">
     <input type="submit">
@@ -31,16 +31,16 @@
     margin-top: 0px;
   }
   .glass-form {
-    color: #fff;
+    color: #0f0f0f;
     padding: 20px;
     height: auto;
     margin: 0 auto;
-    background: rgba(11, 11, 11, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
-    border-top: 1px solid rgba(225, 225, 225, 0.4);
-    border-left: 1px solid rgba(225, 225, 225, 0.2);
-    border-right: thin solid rgba(225, 225, 225, 0.3);
-    border-bottom: 1px solid rgba(225, 225, 225, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: thin solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12px);
     box-shadow: 0px 28px 48px rgba(0, 0, 0, 0.1);
     place-content: center;
@@ -51,7 +51,7 @@
   .glass-form a {
     font-size: 12px;
     text-decoration: underline;
-    color: #fff;
+    color: #fff8f8;
   }
   .glass-form  input {
     display: block;

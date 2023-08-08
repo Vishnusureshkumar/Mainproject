@@ -24,15 +24,15 @@ def Useri(request):
     if 'username' in request.session:
         username = request.session['username']
         # Use the username as needed in your view logic
-    else:
-        # Handle the case when the username is not in the session
-        pass
+    # else:
+    #     # Handle the case when the username is not in the session
+    #     pass
     return render(request,'useri.html')
 
-def regcomplaints(request):
+def regcomplaints(request):  # sourcery skip: extract-method
     username = request.session['username']
     if request.method == "POST":
-        data =request.POST
+        data = request.POST
         name=username
         flatblock=data.get('flatblock')
         flatno=data.get('flatno')
@@ -106,29 +106,31 @@ def Adduser(request):
         
     
 
-def Login(request):
+def admin_login(request):
     error = ""
     if request.method == "POST":
         u =request.POST['uname']
         p =request.POST['pwd']
-        user =authenticate(username=u, password=p)
-        try:
+        user =auth.authenticate(username=u, password=p)
+        try  :
             if user.is_staff:
                 login(request,user)
                 error ="no"
             else:
                 error="yes"
-        except:
+        except Exception:
             error="yes"
-    d={'error':error}        
+    d={'error':error}
     return render(request,'login.html',d)
 
-
-def Logout_admin(request):
-    if not request.user.is_staff:
-        return redirect('login')
+def logout_admin(request):
     logout(request)
     return redirect('admin_login')
+
+# def logout_admin(request):
+    
+#     logout(request)
+#     return redirect('Login')
 
 
 
@@ -165,6 +167,7 @@ def SignupPage(request):
         
 #staff login
 def Login_govt(request):
+    # sourcery skip: remove-unnecessary-else, swap-if-else-branches
     if request.method == "POST":
         username=request.POST.get('uname')
         pass1=request.POST.get('pwd')
@@ -176,6 +179,12 @@ def Login_govt(request):
         else:
             return redirect('loggvt')
     return render(request,'loggvt.html')
+
+def Logout_staff(request):
+    if not request.user.is_staff:
+        return redirect('staffdash')
+    logout(request)
+    return redirect('staffdash')
 
 
 
@@ -222,11 +231,17 @@ def Addstaff(request):
 def Managestaff(request):
     return render(request,'admin/managestaff.html')
 
-def Manageusers(request):
-    return render(request,'admin/manageusers.html')
+def Manageuser(request):
+    #username=request.session['username']
+    
+    queryset =User.objects.all()
+    context ={'Adduser':queryset}  
+    return render(request,'admin/manageuser.html',context)
 
 def Viewcomp(request):
-    return render(request,'admin/viewcomp.html')
+    queryset =Regcomplaint.objects.all()
+    context ={'regcomplaints':queryset}  
+    return render(request,'admin/viewcomp.html',context)
 
 def viewstatuses(request):
     return render(request,'admin/viewstatuses.html')
@@ -242,4 +257,6 @@ def Adduseri(request):
     messages.error(request,"unsuccessfull registration.invalid information")
     form = NewUserForm()
     return render(request=request, template_name="staff/adduseri.html", context={"register_form":form})
-    
+
+def Viewcomplaints(request):
+    return render(request,'staff/viewcomplaints.html')

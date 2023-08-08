@@ -1,10 +1,8 @@
 {% include 'base.html' %}
 {% include 'nav.html' %}
-
-
 {% include 'usersidebar.html' %}
 
-  {% block content %}
+{% block content %}
 
 <!-- <div class="d-flex align-items-start">
   <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -78,10 +76,10 @@
 {% if user.is_authenticated %}
 <div class="center">
     <div class="title">Welcome {{user.first_name}}</div>
-    <div class="sub_title">Have any Grievance? </div>
+    <div class="sub_title">Have any Complaints? </div>
     <div class="sub_title">Submit it Now!</div>
     <div class="btns">
-      <button><a style="color: #000000;" href="/add/">Add Grievance</a></button>
+      <button><a style="color: #000000;" href="/regcomplaints/">Add Complaints</a></button>
         </div>
   </div>
 {% endif %}

@@ -6,11 +6,11 @@
 
 {% block content %}
 <div class="container w-50 my-5">
-  <h1 class="text-center">Registration Form</h1>
+  <h1 class="text-center">ADD USER</h1>
   <form  method="POST">
     {% csrf_token %}
       {{ register_form|crispy }}                    
-  <br>    <button class="form-control btn btn-primary" type="submit">Signup</button>
+  <br>    <button class="form-control btn btn-success" type="submit">Submit</button>
   </form>
 {% comment %} <div class="container mt-5">
     <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
@@ -47,8 +47,8 @@
             <input name="image" required type="file" class="form-control" id="exampleInputimage">
           </div> {% endcomment %}
            
-        <button type="submit" class="btn btn-success">Add user</button>
-      </form>
+        
+      
       {% for msg in messages %}
       {{msg}}
       {% endfor %}
