@@ -260,3 +260,25 @@ def Adduseri(request):
 
 def Viewcomplaints(request):
     return render(request,'staff/viewcomplaints.html')
+
+
+# def delete_user(request, username):
+#     user = User.objects.get(id=username)
+
+#     if request.user.is_admin:
+#         confirmation_message = "Are you sure you want to delete this user?"
+#     else:
+#         confirmation_message = "You do not have permission to delete this user."
+
+#     context = {
+#         "user": user,
+#         "confirmation_message": confirmation_message,
+#     }
+
+# # sourcery skip: merge-nested-ifs
+#     if request.method == "POST":
+#         if request.POST.get("confirm") == "yes":
+#             user.delete()
+#             return redirect("/admin/manageuser")
+
+#     return render(request, "admin/manageuser.html", context)

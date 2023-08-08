@@ -18,7 +18,8 @@
             <th scope="col">Last name</th>
             <th scope="col">User name</th>
             <th scope="col">Email address</th>
-            <th scope="col">delete</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
             
             
           </tr>
@@ -32,9 +33,7 @@
             <td>{{adduser.last_name}}</td>
             <td>{{adduser.username}}</td>
             <td>{{adduser.email}}</td>
-            
-            <td>
-              
+            {% comment %} <td><a class="btn btn-danger" href="delete_user(id)">Delete</a></td> {% endcomment %}   
           </tr>
           
           {% endfor %}
