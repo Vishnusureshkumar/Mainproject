@@ -32,6 +32,7 @@ urlpatterns = [
     path('viewstatus/', views.viewstatuses, name='viewstatuses'),
     path('adduseri/', views.Adduseri, name='adduseri'),
     path('viewcomplaints/', views.Viewcomplaints, name='viewcomplaints'),
-    # path('delete_user/', views.delete_user, name='delete_user'),
+    #path('delete_user/<id>', views.delete_user, name='delete_user'),
+    path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
 ]
 

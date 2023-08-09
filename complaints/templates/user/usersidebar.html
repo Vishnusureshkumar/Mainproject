@@ -1,60 +1,83 @@
+
+
 <style>
 
-    .sidenav {
-      margin: 0;
-      padding: 0;
-      width: 250px;
-      background-color: #111;
-      position: absolute;
-      height: 100rem;
-      overflow: auto; 
-     
-    }
-    
-    /* The navigation menu links */
-    .sidenav a {
-      padding: 6px 8px 6px 16px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-    }
-    
-    /* When you mouse over the navigation links, change their color */
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
-    
-    /* Style page content */
-    .main {
-      margin-left: 160px; /* Same as the width of the sidebar */
-      padding: 0px 10px;
-    }
-    
-    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-    @media screen and (max-height: 450px) {
-      .sidenav {padding-top: 15px;}
-      .sidenav a {font-size: 18px;}
-    }
-    li:hover{
-      background-color: black;
-      border-radius: 20px;
-      border: 1px solid white;
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
   }
   
-    </style>
-    
-
-<div class="sidenav">
-  <li><a href="{% url 'useri' %}">USER DASHBOARD</a></li>
-  <li><a href="{% url 'regcomplaints' %}">Add Complaints</a></li>
-    <li><a href="{% url 'viewstatcomplaints' %}"> Tracking Complaints</a></li>
-      <li><a href="{% url 'feedcomplaints' %}">Feedback</a></li>
-</div>
-
-
-<div class="main">
-    
-</div>
   
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: auto;
+  }
+  
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  
+  </style>
+ 
+  
+  
+  
+ 
+  <!-- The sidebar -->
+  <div class="sidebar">
+  <a href="{% url 'useri' %}">USER DASHBOARD</a>
+      
+      <a href="{% url 'regcomplaints' %}">Add Complaints</a>
+      {% comment %} <a href="{% url 'manageuseri' %}">Manage user</a> {% endcomment %}
+      <a href="{% url 'viewstatcomplaints' %}">view complaints</a>
+      <a href="{% url 'feedcomplaints' %}">Feedback</a>
+    </div>
     
+    <!-- Page content -->
+    <div class="content">
+      ..
+    </div>
+  
+  
+  

@@ -4,8 +4,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <h1 class="text-center"> Complaint Registration Form</h1>
-  <hr>
+  
   <div class="container mt-5 mb-1">
     <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data">
       {% csrf_token %}
@@ -14,6 +15,16 @@
         {% comment %} <div class="mb-3">
             <label for="exampleInputName" class="form-label">Name</label>
             <input name="name" required type="text" class="form-control" id="exampleInputName">
+          </div> {% endcomment %}
+          {% comment %} <div class="mb-3">
+            <label for="cars">Section</label>
+
+            
+            <select name="cars" class="form-control" id="cars" >
+            {% for items in sections %}
+                <option value="sections">{{items.sections}}</option>
+            {% endfor %}    
+            </select>
           </div> {% endcomment %}
           <div class="mb-3">
             <label for="exampleInputflatblock" class="form-label">Flat Block</label>
@@ -54,7 +65,7 @@
       </form>
 
       
-      
+         
 </div>
 {% endblock content %}
 {% include 'footer.html' %}

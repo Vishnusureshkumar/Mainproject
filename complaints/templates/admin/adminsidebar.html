@@ -1,0 +1,175 @@
+<style>body {
+    padding: 0;
+    margin: 0;
+    /* {% comment %} background-image: url(https://images.pexels.com/photos/1642125/pexels-photo-1642125.jpeg?cs=srgb&dl=pexels-the-lazy-artist-gallery-1642125.jpg&fm=jpg); {% endcomment %} */
+    background-size: cover;
+    background-position: absolute;
+    color: black;
+    font-family: tahoma;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  @keyframes slide {
+    0% {
+      left: 0%;
+    }
+    9% {
+      left: 0%;
+    }
+    18% {
+      left: -100%;
+    }
+    27% {
+      left: -100%;
+    }
+    36% {
+      left: -200%;
+    }
+    45% {
+      left: -200%;
+    }
+    54% {
+      left: -300%;
+    }
+    63% {
+      left: -300%;
+    }
+    72% {
+      left: -400%;
+    }
+    81% {
+      left: -400%;
+    }
+    90% {
+      left: -500%;
+    }
+    100% {
+      left: -500%;
+    }
+  }
+  
+  #slider {
+    overflow: hidden;
+  }
+  
+  #slider figure {
+    position: fixed;
+    display: inline-block;
+    width: 600%;
+    height: 50%;
+    padding: 0px;
+    margin: 0px;
+    left: 0px;
+    text-align: left;
+    animation: 30s slide infinite;
+  }
+  
+  #slider figure img {
+    float: left;
+    width: 16.666%;
+    height: 50%;
+  }
+  
+  .my-nav {
+    position: absolute;
+    
+  }
+  
+  .my-nav ul {
+    list-style-type: none;
+    padding: 0;
+    transform: translatex(-270px);
+  }
+  
+  .my-nav ul li {
+    display: block;
+    margin-left: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    width: 300px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 0 30px 30px 0;
+    transition: all 1s;
+  }
+  
+  .my-nav ul li:hover {
+    transform: translatex(110px);
+    padding: 5px;
+  }
+  
+  .my-nav ul li.my-home:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px;
+  }
+  
+  .my-nav ul li.my-event:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-nav ul li.my-music:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-nav ul li.my-info:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-nav ul li.my-photo:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-nav ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+  
+  .my-nav ul li i {
+    text-align: center;
+    margin-left: 20px;
+    color: #f30876;
+    background-color: rgb(255, 250, 250);
+    padding: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 28px;
+    transform: rotate(0deg);
+    cursor: none;
+  }
+  
+  .my-nav ul li:hover i {
+    transform: rotate(360deg);
+    transition: all 1s;
+    background-color: #f30876;
+    color: #000000;
+  }
+  
+</style>
+  {% comment %} <div id="slider">
+    <figure id="slidy">
+       
+        <img src="https://images.pexels.com/photos/4127880/pexels-photo-4127880.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"  />
+        <img src="https://images.pexels.com/photos/792495/pexels-photo-792495.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" />
+        <img src="https://images.pexels.com/photos/2956507/pexels-photo-2956507.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" />
+        <img src="https://images.pexels.com/photos/21787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+       <img src="https://images.pexels.com/photos/7833010/pexels-photo-7833010.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" />
+        <img src="https://images.pexels.com/photos/3770757/pexels-photo-3770757.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load" />
+      </figure>
+  </div> {% endcomment %}
+  <nav class="my-nav">
+    <ul>
+      <li class="my-home"><a href="/index/">Home<i class="fa fa-home" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/adduser/">Add User<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/manageuser/">Manage User<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/addstaff/">Add staff<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/managestaff/">Manage Staff<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/viewcomp/">View Complaints<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/viewstatus/">View Status<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      <li class="my-event"><a href="/viewfeedback/">Feedback<i class="fa fa-calendar" aria-hidden="true"></i></a></li>
+      
+      {% comment %} <li class="my-music"><a href="/manageuser/">Music<i class="fa fa-photo" aria-hidden="true"></i></a></li>
+      <li class="my-info"><a href="/addstaff/">Join Us<i class="fa fa-info" aria-hidden="true"></i></a></li>
+      <li class="my-photo"><a href="/managestaff/">Gallery<i class="fa fa-cog" aria-hidden="true"></i></a></li> {% endcomment %}
+    </ul>
+  </nav>

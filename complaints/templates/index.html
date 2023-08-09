@@ -1,14 +1,29 @@
 {% include 'base.html' %}
 {% include 'adminnav.html' %} 
+{% include 'adminsidebar.html' %} 
 {% block content %}
+
+
 {% if user.is_authenticated %}
-<div class="center">
+<div class="center mt-5">
     <div class="title">Welcome {{user.username}}</div>
     <div class="sub_title">Have any Work? </div>
     <div class="sub_title">Do it Now!</div>
+    
+
+   
+
     <div class="btns">
-      {% comment %} <button><a style="color: #000000;" href="/add/">Add Grievance</a></button>{% endcomment %}
-        </div> 
+      
+      
+        <button class="btn btn-hover"><a style="color:black;" href="/adduser/">Add User</a></button>
+        <button class="btn btn-hover"><a style="color:black;" href="/manageuser/">Manage User</a></button>
+        <button class="btn btn-hover"><a style="color:black;" href="/addstaff/">Add Staff</a></button>
+        <button class="btn btn-hover"><a style="color:black;" href="/managestaff/">Manage Staff</a></button>
+        <button class="btn btn-hover"><a style="color:black;" href="/viewcomp/">View Complaints</a></button>
+        <button class="btn btn-hover"><a style="color:black;" href="/viewstatus/">View Status</a></button>
+        <button class="btn btn-hover"><a style="color:black" href="/viewfeedback/">View Feedback</a></button>
+    </div>
 </div>
 {% endif %}
 <style>
@@ -121,4 +136,6 @@
 
 
 {% endblock content %}
+<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% include 'footer.html' %}

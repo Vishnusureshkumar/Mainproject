@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages,auth
-from .forms import NewUserForm
+from .forms import NewUserForm #ServicesForm
 
 from .models import *
 # Create your views here.
@@ -44,6 +44,7 @@ def regcomplaints(request):  # sourcery skip: extract-method
         complaintmedia=request.FILES.get('complaintmedia')
         
         Regcomplaint.objects.create(
+            
             name=name,
             flatblock=flatblock,
             flatno=flatno,
@@ -56,7 +57,10 @@ def regcomplaints(request):  # sourcery skip: extract-method
         )
         return redirect('/regcomplaints/')
     queryset =Regcomplaint.objects.all()
-    context ={'regcomplaints':queryset}  
+    context ={
+        'regcomplaints':queryset,
+         
+        }  
     
     return render(request,'regcomplaints.html',context)
 
@@ -68,13 +72,15 @@ def Viewstatcomplaints(request):
     return render(request,'viewstatcomplaints.html',context)
 
 def Feedcomplaints(request):
+    username = request.session['username']
     if request.method == "POST":
+        name = username
         feed_sub = request.POST['feed_sub']
         feed_description = request.POST['feed_description']
-        Feedback.objects.create(feed_sub=feed_sub,
+        Feedback.objects.create(name=name,feed_sub=feed_sub,
                                      feed_description=feed_description, 
                                     )  
-        Feedback(feed_sub=feed_sub, feed_description=feed_description)
+        Feedback(name=name,feed_sub=feed_sub, feed_description=feed_description)
         messages.info(request,'Successfully Added your Feedback')
         return redirect('feedcomplaints')
     return render(request,'feedcomplaints.html')
@@ -244,8 +250,15 @@ def Viewcomp(request):
     return render(request,'admin/viewcomp.html',context)
 
 def viewstatuses(request):
-    return render(request,'admin/viewstatuses.html')
+    return render(request,'admin/viewstatus.html')
 
+def Viewfeedback(request):
+    queryset=Feedback.objects.all()
+    context={'Feedcomplaints':queryset}
+    return render(request,'admin/viewfeedback.html',context)
+
+
+#staff side
 def Adduseri(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -282,3 +295,9 @@ def Viewcomplaints(request):
 #             return redirect("/admin/manageuser")
 
 #     return render(request, "admin/manageuser.html", context)
+
+# def delete_user(request,id):
+#     queryset=User.objects.all(id=id)
+#     queryset.delete()
+#     return redirect('/manageuser/')
+

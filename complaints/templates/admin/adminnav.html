@@ -16,7 +16,9 @@
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li> {% endcomment %}
           {% if user.is_authenticated %}
-          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Admin DashBoard</a>
+          </li>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Services
@@ -26,8 +28,9 @@
             <li><a class="dropdown-item" href="{% url 'manageuser' %}">Manage User</a></li>
             <li><a class="dropdown-item" href="{% url 'addstaff' %}">Add staff</a></li>
             <li><a class="dropdown-item" href="{% url 'managestaff' %}">Manage Staff</a></li>
-            <li><a class="dropdown-item" href="{% url 'addservice' %}">Add Service</a></li>
+            
             <li><a class="dropdown-item" href="{% url 'viewcomp' %}">View Complaints</a></li>
+            <li><a class="dropdown-item" href="{% url 'viewfeedback' %}">View Feedback</a></li>
             </ul>
           </li>
           

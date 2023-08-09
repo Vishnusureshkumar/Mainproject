@@ -1,20 +1,27 @@
 {% include 'base.html' %}
 {% include 'navigation.html' %}
 
-
-
 {% block content %}
-<h1 class="text-center">welcome to COMPLAINT REGISTRATION SYSTEM</h1>
+
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div class="carousel-inner ">
+      
       <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
+        <div class="carousel-caption ">
+          <div class="center ">
+            <div class="title">Welcome to CRS Portal</div>
+            <div class="sub_title">Have any Work? </div>
+            <div class="sub_title">Do it Now!</div>
+          </div>
+        </div>
+        <img src="https://www.orasoftnepal.com/sliderfiles/ll/slider1.jpg" class="d-block w-100" alt="...">
+        
       </div>
       <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+        <img src="https://megaproperty.in/wp-content/uploads/2023/05/megaproperty.in-1.jpg" class="d-block w-100" alt="...">
       </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-item ">
+        <img src="https://plus.unsplash.com/premium_photo-1680185462024-449a2abaec28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" class="d-block w-100" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -26,6 +33,82 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  *{
+    margin: 10;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+  }
+  ::selection{
+    color: #000000;
+    background: #fff;
+  }
+  
+  .menu .logo a{
+    text-decoration: none;
+    color: #050505;
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .menu ul{
+    display: inline-flex;
+  }
+  .menu ul li{
+    list-style: none;
+    margin-left: 7px;
+  }
+  .menu ul li:first-child{
+    margin-left: 0px;
+  }
+  .menu ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  .menu ul li a:hover{
+    background: #fff;
+    color: rgb(0, 0, 0);
+  }
+  .img{
+    background: url('img3.jpg')no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .img::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .center{
+    position: absolute;
+    top: 44%;
+    left: 50%;
 
-{% endblock content %}
+    transform: translate(-50%, -50%);
+    width: auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .center .title{
+    color: #e0dada;
+    font-size: 55px;
+    font-weight: 600;
+  }
+  .center .sub_title{
+    color: #cdb1b1;
+    font-size: 42px;
+    font-weight: 600;
+  }</style>
+{% endblock content %}<br>
+<br>
 {% include 'footer.html' %}
