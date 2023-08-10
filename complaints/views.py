@@ -301,3 +301,12 @@ def Viewcomplaints(request):
 #     queryset.delete()
 #     return redirect('/manageuser/')
 
+
+def admin_delete_user(request, id):
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/manageuser/')
+    return render(request,"admin_delete_user.html")   
+
+

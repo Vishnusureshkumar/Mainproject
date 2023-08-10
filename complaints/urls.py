@@ -34,5 +34,6 @@ urlpatterns = [
     path('viewcomplaints/', views.Viewcomplaints, name='viewcomplaints'),
     #path('delete_user/<id>', views.delete_user, name='delete_user'),
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
+    path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
 ]
 

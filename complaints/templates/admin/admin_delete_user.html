@@ -1,0 +1,23 @@
+{% include 'base.html' %}
+{% include 'adminnav.html' %}
+{% include 'adminsidebar.html' %} 
+{% block content %}
+<div class="container mt-5">
+<div class="center mt-10">
+<form method="post">
+    {%csrf_token%}
+    <h5>Are you sure to delete this user?</h5><br>
+      <input class="btn btn-warning" type="submit">
+  </form>
+</div>
+{% endblock content %}
+<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}
+
+<style>
+
+.container{
+  text-align: center;
+}
+</style>
