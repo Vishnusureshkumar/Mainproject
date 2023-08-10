@@ -3,7 +3,52 @@
 {% include 'staffdash.html' %}
 
 
+<div class="container w-50 my-5">
+ 
+</div>
+<h1 class="text-center">Feedback</h1>
+<hr>
+<div style="padding-left: 173px;" class="container mt-5 ">
+    
+ 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">User name</th>
+            <th scope="col">complaint Subject</th>
+            
+            <th scope="col">Feedback</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for i in regcomplaints %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.flatblock}}</td>
+            <td>{{i.flatno}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phoneno}}</td>
+            <td>{{i.complainttype}}</td>
+            <td>{{i.complainttitle}}</td>
+            <td>{{i.complaintdescription}}</td>
+        
+            <!-- <td> <button href="/delete_user/{{adduser.id}}" class="btn btn-danger">Delete</button></td>
+               -->
+          </tr>
+          
+          {% endfor %}
+          
+        </tbody>
+      </table>
 
+    
+</div>
 {% block content %}
 
   

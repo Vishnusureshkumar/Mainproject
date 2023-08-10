@@ -31,6 +31,7 @@ def Useri(request):
 
 def regcomplaints(request):  # sourcery skip: extract-method
     username = request.session['username']
+    
     if request.method == "POST":
         data = request.POST
         name=username
@@ -39,6 +40,7 @@ def regcomplaints(request):  # sourcery skip: extract-method
         date=data.get('date')
         email=data.get('email')
         phoneno=data.get('phoneno')
+        complainttype=data.get('complainttype')
         complainttitle=data.get('complainttitle')
         complaintdescription=data.get('complaintdescription')
         complaintmedia=request.FILES.get('complaintmedia')
@@ -51,6 +53,7 @@ def regcomplaints(request):  # sourcery skip: extract-method
             date=date,
             email=email,
             phoneno=phoneno,
+            complainttype=complainttype,
             complainttitle=complainttitle,
             complaintdescription=complaintdescription,
             complaintmedia=complaintmedia,
@@ -174,23 +177,27 @@ def SignupPage(request):
 #staff login
 def Login_govt(request):
     # sourcery skip: remove-unnecessary-else, swap-if-else-branches
+    error=""
     if request.method == "POST":
         username=request.POST.get('uname')
         pass1=request.POST.get('pwd')
         user=authenticate(request, username=username, password=pass1)
-
-        if user is not None:
-            login(request,user)
-            return redirect('staffdash')
-        else:
-            return redirect('loggvt')
-    return render(request,'loggvt.html')
+        try  :
+            if user.is_staff:
+                login(request,user)
+                error ="no"
+            else:
+                error="yes"
+        except Exception:
+            error="yes"
+    d={'error':error}
+    return render(request,'loggvt.html',d)   
 
 def Logout_staff(request):
     if not request.user.is_staff:
-        return redirect('staffdash')
+        return redirect('loggvt')
     logout(request)
-    return redirect('staffdash')
+    return redirect('loggvt')
 
 
 
@@ -259,6 +266,9 @@ def Viewfeedback(request):
 
 
 #staff side
+def Staffi(request):
+    return render(request,'staff/staffi.html')
+
 def Adduseri(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -271,8 +281,16 @@ def Adduseri(request):
     form = NewUserForm()
     return render(request=request, template_name="staff/adduseri.html", context={"register_form":form})
 
-def Viewcomplaints(request):
-    return render(request,'staff/viewcomplaints.html')
+# def Viewcomplaints(request):
+    
+#     if (request.method == "POST") and (username=='Electricity'|'Plumbing & Drainage'|'Construction'):
+#         username=request.session.get('username')
+#     #c=Regcomplaint.objects.filter(complainttype='Elecricity')  
+#     queryset=Regcomplaint.objects.filter(complainttype={'Plumbing & Drainage','Elecricity','Construction'})    
+#     #d=Regcomplaint.objects.filter(complainttype='Construction')
+#     context ={'regcomplaints':queryset}  
+            
+#     return render(request,'staff/viewcomplaints.html',context)
 
 
 # def delete_user(request, username):

@@ -1,5 +1,5 @@
 from django.urls import path
-from complaints.views import About,Home,Contact,Logout_staff,Useri,regcomplaints,Viewstatcomplaints,Feedcomplaints,Staffdash,Viewcomplaints,Logout_user,Index,Login_govt,Addstaff,Adduser,Addservice
+from complaints.views import About,Home,Contact,Logout_staff,Useri,regcomplaints,Viewstatcomplaints,Feedcomplaints,Staffdash,Viewcomplaints,Logout_user,Index,Addstaff,Adduser,Addservice
 from .import views 
 
 
@@ -17,6 +17,7 @@ urlpatterns = [
     path('viewstatcomplaints/', Viewstatcomplaints, name='viewstatcomplaints'),
     path('feedcomplaints/', Feedcomplaints, name='feedcomplaints'),
     path('staffdash/', Staffdash, name='staffdash'),
+    path('staffi/', views.Staffi, name='staffi'),
     path('viewcomplaints/', Viewcomplaints, name='viewcomplaints'),
     path('user/signup/',views.SignupPage, name='signup'),
     path('user/logi/',views.LoginPage, name='logi'),
@@ -31,7 +32,7 @@ urlpatterns = [
     path('viewcomp/', views.Viewcomp, name='viewcomp'),
     path('viewstatus/', views.viewstatuses, name='viewstatuses'),
     path('adduseri/', views.Adduseri, name='adduseri'),
-    path('viewcomplaints/', views.Viewcomplaints, name='viewcomplaints'),
+    #path('viewcomplaints/', views.Viewcomplaints, name='viewcomplaints'),
     #path('delete_user/<id>', views.delete_user, name='delete_user'),
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),

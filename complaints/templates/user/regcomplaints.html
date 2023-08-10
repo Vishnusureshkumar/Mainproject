@@ -46,7 +46,19 @@
         <div class="mb-3">
           <label for="exampleInputphoneno" class="form-label">Phone Numer</label>
           <input name="phoneno" required  type="number" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputphoneno" class="form-label">Complaint Type</label>
+          <select class="form-control" name="complainttype" required="" id="id_complainttype">
+            <option value="" selected=""></option>
           
+            <option value="Electricity">Electricity</option>
+          
+            <option value="Plumbing & Drainage">Plumbing & Drainage</option>
+          
+            <option value="Construction">Construction</option>
+          
+          </select>
         </div>
         <div class="mb-3">
           <label for="exampleInputdate" class="form-label">Complaint Subject</label>
@@ -55,17 +67,17 @@
         
         <div class="mb-3">
             <label for="exampleInputfiles" class="form-label">Files</label>
-            <input name="complaintmedia" required type="file" class="form-control" id="exampleInputfiles">
+            <input name="complaintmedia" type="file" class="form-control" id="exampleInputfiles">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Complaint Description</label>
             <textarea class="form-control" name="complaintdescription" required id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </form>
 
       
          
-</div>
+  </div>
 {% endblock content %}
 {% include 'footer.html' %}

@@ -40,7 +40,17 @@
           
     </div>
   </nav>
-
+  {% if error == "no" %}
+  <script>
+      alert('logged in successfully');
+      window.location = "{% url 'staffi' %}";
+  </script>
+{% endif %}
+{% if error == "yes" %}
+  <script>
+  alert('invalid login try again!');
+  </script>
+{% endif %}
 
 <div class="container w-50 my-5">
     <h2 class="text-center">Resident staff Login</h2>

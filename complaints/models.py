@@ -11,6 +11,7 @@ from django.contrib.auth.models import AbstractBaseUser
 
 
 class Regcomplaint(models.Model):
+    #TYPE=(('Elecricity',"Elecricity"),('Plumbing & Drainage',"Plumbing & Drainage"),('Construction',"Construction"))
     name = models.CharField(max_length=15,null=True)
     flatblock=models.CharField(max_length=4,null=True)
     flatno=models.IntegerField(null=True)
@@ -18,6 +19,10 @@ class Regcomplaint(models.Model):
     
     email=models.EmailField(null=True)
     phoneno=models.IntegerField(null=True)
+    Electricity='Electricity'
+    Plumbing_and_Drainage='Plumbing & Drainage'
+    Construction='Construction'
+    complainttype=models.CharField(choices=((Electricity,'Electricity'),(Plumbing_and_Drainage,'Plumbing & Drainage'),(Construction,'Construction"')),null=True,max_length=200)
     complainttitle =models.CharField(max_length=20)
     complaintmedia =models.ImageField(upload_to='images')
     complaintdescription =models.TextField(max_length=500)
