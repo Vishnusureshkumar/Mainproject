@@ -1,6 +1,6 @@
 
 
-<style>
+{% comment %} <style>
 
   .sidebar {
     margin: 0;
@@ -64,12 +64,12 @@
   
   
  
-  <!-- The sidebar -->
+ 
   <div class="sidebar">
   <a href="{% url 'useri' %}">USER DASHBOARD</a>
       
       <a href="{% url 'regcomplaints' %}">Add Complaints</a>
-      {% comment %} <a href="{% url 'manageuseri' %}">Manage user</a> {% endcomment %}
+      
       <a href="{% url 'viewstatcomplaints' %}">view complaints</a>
       <a href="{% url 'feedcomplaints' %}">Feedback</a>
     </div>
@@ -80,4 +80,405 @@
     </div>
   
   
+   {% endcomment %}
+
+
+
+
+   {% comment %} <body id="mainBody" class="body ui-sidebar">
+    <!-- START OF MAIN CONTENT -->
+    <div class="mainContent">
+      <div class="sidebar-icons">
+        <a href="{% url 'useri' %}" data-bs-toggle="tooltip" data-bs-html="true" title="Home" class="active">
+          <i class="fas fa-home"></i>
+        </a>
+        
+        <a href="{% url 'regcomplaints' %} " data-bs-toggle="tooltip" data-bs-html="true" title="Add Complaints">
+          <i class="fas fa-user"></i>
+        </a>
+        <a href="{% url 'viewstatcomplaints' %} " data-bs-toggle="tooltip" data-bs-html="true" title="view Complaints">
+          <i class="fas fa-user"></i>
+        </a>
+        <a href="{% url 'feedcomplaints' %} " data-bs-toggle="tooltip" data-bs-html="true" title="Feedback">
+          <i class="fas fa-user"></i>
+        </a>
+        
+
+        <a href="{% url 'logout_user' %}" data-bs-toggle="tooltip" data-bs-html="true" title="LogOut">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </div>
+      <button onclick="myFunction()" id="mainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+        <i class="fas fa-angle-double-right"></i>
+        <i class="fas fa-angle-double-left"></i>
+      </button>
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-body">
+          <p>Home</p>
+          
+          <p>Add Complaints</p>
+          <p>View Complaints</p>
+          <p>Feedback</p>
+          <p>Sign Out</p>
+          <p>Hello {{user.first_name}}</p>
+
+
+        </div>
+      </div>
+      <div class="content-wrapper">
+        <h1 class="display-1"></h1>
+        <p> </p>
+        <p></p>
+        <div class="images">
+          <img src="" alt="" class="nighttime">
+          <img src="" alt="" class="nighttime">
+          <img src="" alt="" class="daytime">
+          <img src="" alt="" class="daytime">
+        </div>
+        <p></p>
+        <p></p>
+        <p>  </P>      <p></p>
+
+        <a class="dark" onclick="darkFunction()" data-bs-toggle="tooltip" data-bs-html="true" title="Toggle Dark Mode">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <span>Toggle Dark/Light mode</span>
+          </a>
+      </div>
+    </div>
+    <!-- END OF MAIN CONTENT -->
+  </body>
+
+
+  <style>
+
+    .ui-sidebar {
+      background-color: #FFF6E6;
+      -webkit-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+      font-family: 'DM Sans', sans-serif;
+  }
   
+  .ui-sidebar .mainContent {
+      padding: 30px;
+  }
+  
+  .sidebar-icons {
+      position:fixed;
+      top: 0;
+      left: 0;
+      background: #FF8066;
+      z-index: 1051;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      padding: 0;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      height: 100vh;
+      -webkit-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+  }
+  
+  .sidebar-icons a {
+      color: #fff;
+      margin: 10px 0 10px 5px;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 0px 14px 0 10px;
+  }
+  
+  .sidebar-icons a.active {
+  
+      border-left: 3px white solid;
+  }
+  
+  .sidebar-icons a:last-child {
+      position: relative;
+      left: 0px;
+      bottom: 0;
+      background-color: #3F464D;
+      width: 55px;
+      text-align: center;
+      height: 40px;
+      padding: 10px;
+      margin: 0;
+  }
+  
+  .sidebar-icons a i {
+      padding-right: 0;
+      font-size: 20px;
+  }
+  
+  .sidebar-icons a i:focus-visible {
+      border: none;
+      outline: none;
+  }
+  
+  .offcanvas.offcanvas-start {
+      left: 40px;
+      visibility: visible;
+      background-color: #FF8066;
+      margin-right: 20px;
+      color: #fff;
+      width: 250px;
+      -webkit-transition: all .3s;
+      -o-transition: all .3s;
+      transition: all .3s;
+  }
+  
+  .offcanvas-body {
+      padding: 0 15px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      position: relative;
+  }
+  
+  .offcanvas-body p {
+      margin: 10px 0;
+  }
+  
+  .offcanvas-body p:last-child {
+      position:absolute ;
+      left: 0;
+      bottom: 0;
+      background-color: #3F464D;
+      width: 43px;
+      text-align: center;
+      height: 40px;
+      padding: 10px 15px;
+      width: 100%;
+      text-align: left;
+      margin: 0;
+  }
+  
+  .ui-sidebar .btn {
+      position: absolute;
+      left: 0;
+      z-index: 999999;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      background-color: transparent;
+      border: none;
+      -webkit-transition: margin .3s;
+      -o-transition: margin .3s;
+      transition: margin .3s;
+      -webkit-transition-delay: .3s;
+           -o-transition-delay: .3s;
+              transition-delay: .3s;
+      height: 50px;
+      padding: 0 0 0 25px;
+  }
+  
+  .ui-sidebar .btn:focus,
+  .ui-sidebar .btn:focus-visible {
+      outline: 0;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+  }
+  
+  .btn.open {
+      margin-left: 240px;
+  }
+  
+  .btn:hover,
+  .btn:focus-visible,
+  .btn:active {
+      background-color:transparent !important;
+      border: none;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+  }
+  
+  .btn i {
+      padding-right: 0;
+      background-color: #7ECEFC;
+      padding: 10px;
+      border-radius: 40px;
+      color: #3F464D;
+      margin-left: 0;
+      transition-delay: .1s;
+  }
+  
+  .btn i:nth-child(1) {
+      opacity: 1;
+  }
+  
+  .btn i:nth-child(2) {
+      opacity: 0;
+      margin-left: -34px;
+  }
+  
+  .btn.open i:nth-child(1) {
+      opacity: 0;
+      margin-left: 0;
+  }
+  
+  .btn.open i:nth-child(2) {
+      opacity: 1;
+  }
+  
+  .ui-sidebar .mainContent {
+      margin-left: 40px;
+  
+  }
+  
+  .ui-sidebar .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+  
+  .ui-sidebar .content-wrapper h1 {
+      text-align: center;
+      font-family: 'DM Serif Display', serif;
+  }
+  
+  .ui-sidebar .content-wrapper p {
+      display: block;
+      width: 100%;
+      text-align: left;
+  }
+  
+  .ui-sidebar .content-wrapper .images {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      margin-bottom: 1rem;
+  }
+  
+  .ui-sidebar .content-wrapper img {
+      max-width: 350px;
+      display: block;
+      margin: 10px 20px;
+  }
+  
+  .ui-sidebar .content-wrapper img.nighttime {
+      display: none;
+  }
+  
+  /* Dark Mode */
+  .ui-sidebar.dark {
+      background-color: #3F464D;
+      color: #fff;
+  }
+  
+  .ui-sidebar.dark .sidebar-icons,
+  .ui-sidebar.dark .offcanvas.offcanvas-start {
+      background-color: #000;
+  }
+  
+  .ui-sidebar a.dark {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      background-color: #FFF6E6;
+      color: #000;
+      border: 4px solid #000;
+      padding: 10px;
+      border-radius: 40px;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .ui-sidebar.dark a.dark {
+      background-color: #000;
+      color: #fff;
+      border: 4px solid #fff;
+  }
+  
+  .ui-sidebar a.dark:active {
+      bottom: 7px;
+      box-shadow: 0px 3px 0 #000;
+  }
+  
+  .ui-sidebar.dark a.dark:active {
+      bottom: 7px;
+      box-shadow: 0px 3px 0 #fff;
+  }
+  
+  .ui-sidebar a.dark i {
+      font-size: 22px;
+      padding-right: 10px;
+  }
+  
+  .ui-sidebar a.dark i:nth-child(1) {
+      display: none;
+  }
+  
+  .ui-sidebar.dark a.dark i:nth-child(1) {
+      display: inline-block;
+  }
+  
+  .ui-sidebar.dark a.dark i:nth-child(2) {
+      display: none;
+  }
+  
+  .ui-sidebar.dark .btn i {
+      background-color: #2186C4;
+      color: #fff;
+  }
+  
+  .ui-sidebar.dark .sidebar-icons a:last-child {
+      background-color: #333;
+  }
+  
+  .ui-sidebar.dark .offcanvas-body p:last-child {
+      background-color: #333;
+  }
+  
+  .ui-sidebar.dark .content-wrapper img.nighttime {
+      display: block;
+  }
+  
+  .ui-sidebar.dark .content-wrapper img.daytime {
+      display: none;
+  }
+  </style>
+
+
+  <script>
+    function myFunction() {
+      var element = document.getElementById("mainButton");
+      element.classList.toggle("open");
+    }
+  
+    function darkFunction() {
+      var element = document.getElementById("mainBody");
+      element.classList.toggle("dark");
+    }
+  
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+  </script> {% endcomment %}

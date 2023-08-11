@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 
 # Create your forms here.
 
+
+
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
 
@@ -22,6 +24,11 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 	
+
+
+
+
+
 
 
 	

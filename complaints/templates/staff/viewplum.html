@@ -1,0 +1,62 @@
+{% include 'base.html' %}
+
+{% include 'navb.html' %} 
+{% include 'staffdash.html' %}
+{% block content %}
+    
+
+<h1 class="text-center">Plumbing Complaints</h1>
+
+<div style="padding-left: 173px;" class="container mt-5 ">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Flat Block</th>
+            <th scope="col">Flat Number</th>
+            <th scope="col">Date</th>
+            <th scope="col">Email </th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Complaint Type</th>
+            <th scope="col">Complaint Subject</th>
+            <th scope="col">Complaint Description</th>
+            <th scope="col">Media</th>
+            <th scope="col">status</th>
+            
+          </tr>
+    </thead>
+    <tbody>
+          
+    {% for i in viewplum %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.flatblock}}</td>
+            <td>{{i.flatno}}</td>
+            <td>{{i.date}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phoneno}}</td>
+            <td>{{i.complainttype}}</td>
+            <td>{{i.complainttitle}}</td>
+            <td>{{i.complaintdescription}}</td>
+            <td>
+                <img src="/media/{{i.complaintmedia}}" style="height: 100px;"></td>
+            <!-- <td> <button href="/delete_user/{{adduser.id}}" class="btn btn-danger">Delete</button></td>
+               -->
+          </tr>
+          
+    {% endfor %}
+          
+    </tbody>
+    </table>
+
+    
+</div>
+
+
+  
+
+{% endblock content %}<br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

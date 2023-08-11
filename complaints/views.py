@@ -6,6 +6,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages,auth
 from .forms import NewUserForm #ServicesForm
 
+
+
+
+
 from .models import *
 # Create your views here.
 def About(request):
@@ -182,9 +186,11 @@ def Login_govt(request):
         username=request.POST.get('uname')
         pass1=request.POST.get('pwd')
         user=authenticate(request, username=username, password=pass1)
+        
         try  :
             if user.is_staff:
                 login(request,user)
+                request.session['username'] = user.username
                 error ="no"
             else:
                 error="yes"
@@ -281,16 +287,53 @@ def Adduseri(request):
     form = NewUserForm()
     return render(request=request, template_name="staff/adduseri.html", context={"register_form":form})
 
-# def Viewcomplaints(request):
-    
-#     if (request.method == "POST") and (username=='Electricity'|'Plumbing & Drainage'|'Construction'):
-#         username=request.session.get('username')
-#     #c=Regcomplaint.objects.filter(complainttype='Elecricity')  
-#     queryset=Regcomplaint.objects.filter(complainttype={'Plumbing & Drainage','Elecricity','Construction'})    
-#     #d=Regcomplaint.objects.filter(complainttype='Construction')
-#     context ={'regcomplaints':queryset}  
-            
-#     return render(request,'staff/viewcomplaints.html',context)
+def Manageuseri(request):
+    queryset =User.objects.all()
+    context ={'Adduser':queryset}  
+    return render(request,'staff/manageuseri.html', context)
+
+def viewcomplaints(request):
+    #complainttype = request.session('complainttype')
+    # if complainttype == 'Electricity':
+    #     queryset = Regcomplaint.objects.filter(complainttype='Electricity')
+    #     context = {'viewcomplaints': queryset}
+    #     templates = 'staff/viewcomplaints.html'
+    # elif complainttype == 'Plumbing':
+    #     queryset = Regcomplaint.objects.filter(complainttype='Plumbing')
+    #     context = {'viewplum': queryset}
+    #     templates = 'staff/viewplum.html'
+    # elif complainttype == 'Construction':
+    #     queryset = Regcomplaint.objects.filter(complainttype='Construction')
+    #     context = {'viewcon': queryset}
+    #     templates = 'staff/viewcon.html'
+    # else:
+    #     queryset = Regcomplaint.objects.filter(complainttype='others')
+    #     context = {'viewother': queryset}
+    #     templates = 'staff/viewother.html'
+
+    # return render(request, templates, context)
+    username=request.session['username']
+    queryset=Regcomplaint.objects.filter(complainttype=username)
+    context ={'viewcomplaints':queryset}      
+    return render(request,'staff/viewcomplaints.html',context)
+
+def viewplum(request):
+    username=request.session['username']
+    queryset=Regcomplaint.objects.filter(complainttype=username)
+    context ={'viewplum':queryset}  
+    return render(request,'staff/viewplum.html',context)
+
+def viewcon(request):
+    username=request.session['username']
+    queryset=Regcomplaint.objects.filter(complainttype=username)
+    context ={'viewcon':queryset}
+    return render(request,'staff/viewcon.html',context)
+
+def viewother(request):
+    username=request.session['username']
+    queryset=Regcomplaint.objects.filter(complainttype=username)
+    context ={'viewother':queryset}
+    return render(request,'staff/viewother.html',context)
 
 
 # def delete_user(request, username):
@@ -326,5 +369,10 @@ def admin_delete_user(request, id):
         user.delete()
         return redirect('/manageuser/')
     return render(request,"admin_delete_user.html")   
+
+
+
+
+
 
 

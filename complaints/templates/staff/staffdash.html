@@ -68,8 +68,24 @@
       
       <a href="{% url 'adduseri' %}">Add User</a>
       
-      {% comment %} <a href="{% url 'manageuseri' %}">Manage user</a> {% endcomment %}
-      <a href="{% url 'viewcomplaints' %}">view complaints</a>
+      <a href="{% url 'manageuseri' %}">Manage user</a>
+
+
+      {% if viewcomplaints %}
+        <a href="{% url 'viewcomplaints' %}">view complaints</a>
+      {% elif viewcon %} 
+        <a href="{% url 'viewplum' %}">view complaints</a>
+      {% elif viewcon %} 
+      <a href="{% url 'viewcon' %}">view complaints</a>
+      {% else %} 
+      <a href="{% url 'viewother' %}">view complaints</a>
+      {% endif %}
+      
+
+
+
+
+      
       
     </div>
     

@@ -3,20 +3,33 @@
 {% include 'nav.html' %}
 {% include 'usersidebar.html' %}
 {% block content %}
-<div class="glass-container" ><br><br><br>
-  <form class="glass-form" method="post">
-      {% csrf_token %}
+<div class="glass-container mt-5 mb-1" ><br><br><br>
+  <form class="glass-form col-6 mx-auto  p-3" method="post" enctype="multipart/form-data">
+      <!-- {% csrf_token %}
     <h1 class="text-center">Please Submit Your Feedback</h1>
-    <input type="text" placeholder="Enter Complaint Subject" name="feed_sub">
-    <input type="text" placeholder="Enter your Feedback" name="feed_description">
-    <input type="submit">
+    <input type="text"  placeholder="Enter Complaint Subject" name="feed_sub">
+    <input type="text" placeholder="Enter your Feedback" name="feed_description"> -->
+    <!-- <div class="container mt-5 mb-1">
+      <form class="col-6 mx-auto card p-3" method="post" enctype="multipart/form-data"> -->
+      {% csrf_token %}
+          <h1 class="text-center">Feedback</h1>
+          <hr>
+           <div class="mb-3">
+              <label for="exampleInputName" class="form-label">Complaint Subject</label>
+              <input name="feed_sub" required type="text" placeholder="Enter Complaint Subject" class="form-control" id="exampleInputName">
+            </div> 
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label">Feedback</label>
+              <input name="feed_description" required type="text" placeholder="Enter your Feedback" class="form-control" id="exampleInputName">
+            </div> 
+    <button type="submit" class="form-control btn btn-primary">Submit</button>
   </form>
   <!-- {%for msg in messages%}
   <h3>{{msg}}</h3>
   {%endfor%} -->
 </div>
 
-<style>
+<!-- <style>
 
   * {
     box-sizing: border-box;
@@ -76,7 +89,10 @@
     color: #ede7e7;
   }
   
-  </style>
+  </style> -->
   
 {% endblock content %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% include 'footer.html' %}
+
+

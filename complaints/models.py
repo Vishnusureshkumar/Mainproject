@@ -20,9 +20,10 @@ class Regcomplaint(models.Model):
     email=models.EmailField(null=True)
     phoneno=models.IntegerField(null=True)
     Electricity='Electricity'
-    Plumbing_and_Drainage='Plumbing & Drainage'
+    Plumbing='Plumbing'
     Construction='Construction'
-    complainttype=models.CharField(choices=((Electricity,'Electricity'),(Plumbing_and_Drainage,'Plumbing & Drainage'),(Construction,'Construction"')),null=True,max_length=200)
+    others='others'
+    complainttype=models.CharField(choices=((Electricity,'Electricity'),(Plumbing,'Plumbing'),(Construction,'Construction'),(others,'others')),null=True,max_length=200)
     complainttitle =models.CharField(max_length=20)
     complaintmedia =models.ImageField(upload_to='images')
     complaintdescription =models.TextField(max_length=500)

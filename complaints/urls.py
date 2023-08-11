@@ -29,12 +29,20 @@ urlpatterns = [
     path('adduser/', Adduser, name='adduser'),
     path('managestaff/', views.Managestaff, name='managestaff'),
     path('manageuser/', views.Manageuser, name='manageuser'),
+    path('manageuseri/', views.Manageuseri, name='manageuseri'),
     path('viewcomp/', views.Viewcomp, name='viewcomp'),
     path('viewstatus/', views.viewstatuses, name='viewstatuses'),
     path('adduseri/', views.Adduseri, name='adduseri'),
-    #path('viewcomplaints/', views.Viewcomplaints, name='viewcomplaints'),
+    path('viewcomplaints/', views.viewcomplaints, name='viewcomplaints'),
+    path('viewplum/', views.viewplum, name='viewplum'),
+    path('viewcon/', views.viewcon, name='viewcon'),
+    path('viewother/', views.viewother, name='viewother'),
     #path('delete_user/<id>', views.delete_user, name='delete_user'),
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
+
+
+
+
 ]
 
