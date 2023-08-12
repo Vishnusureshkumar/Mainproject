@@ -64,20 +64,32 @@
  
   <!-- The sidebar -->
   <div class="sidebar">
-  <a href="{% url 'staffi' %}">STAFF DASHBOARD</a>
+  {% comment %} <a href="{% url 'staffi' %}">STAFF DASHBOARD</a>
       
       <a href="{% url 'adduseri' %}">Add User</a>
       
-      <a href="{% url 'manageuseri' %}">Manage user</a>
+      <a href="{% url 'manageuseri' %}">Manage user</a> {% endcomment %}
 
 
       {% if viewcomplaints %}
-        <a href="{% url 'viewcomplaints' %}">view complaints</a>
+      <a href="{% url 'adduseri' %}">Add User</a>
+      
+      <a href="/elec_staff/">Manage user</a>
+        <a href="/viewcomplaints/">view complaints</a>
       {% elif viewcon %} 
-        <a href="{% url 'viewplum' %}">view complaints</a>
-      {% elif viewcon %} 
-      <a href="{% url 'viewcon' %}">view complaints</a>
+      <a href="{% url 'adduseri' %}">Add User</a>
+      
+      <a href="/con_staff/">Manage user</a>
+        <a href="/viewcon/">view complaints</a>
+      {% elif viewplum %} 
+      <a href="{% url 'adduseri' %}">Add User</a>
+      
+      <a href="/plum_staff/">Manage user</a>
+      <a href="/viewplum/">view complaints</a>
       {% else %} 
+      <a href="{% url 'adduseri' %}">Add User</a>
+      
+      <a href="/other_staff/">Manage user</a>
       <a href="{% url 'viewother' %}">view complaints</a>
       {% endif %}
       

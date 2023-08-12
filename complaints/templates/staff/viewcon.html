@@ -5,12 +5,13 @@
 {% block content %}
 {% if viewcon %}
 
-<h1>Construction Complaints</h1>
+
 
 <h1 class="text-center">Construction Complaints</h1>
 
-<div style="padding-left: 173px;" class="container mt-5 ">
-    
+
+  {% if viewcon %}
+  <div style="padding-left: 173px;" class="container mt-5 ">
     <table class="table">
         <thead>
           <tr>

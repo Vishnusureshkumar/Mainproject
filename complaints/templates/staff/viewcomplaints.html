@@ -7,13 +7,14 @@
 
 
 
-<h1 class="text-center"> Electricity COMPLAINTS</h1>
+
 
 
     
 
 <div style="padding-left: 173px;" class="container mt-5 ">
 <h1>Electricity Complaints</h1>
+{% if viewcomplaints %}
     <table class="table">
     <thead>
       <tr>
@@ -57,6 +58,7 @@
       
         </tbody>
       </table>
+  {% endif %}    
     </div>
 
     {% comment %} {% if complainttype == 'Plumbing' %} 

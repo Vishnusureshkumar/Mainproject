@@ -1,0 +1,54 @@
+{% include 'base.html' %}
+
+{% include 'navb.html' %} 
+{% include 'staffdash.html' %}
+{% block content %}
+<div class="container w-50 my-5">
+ 
+</div>
+<h1 class="text-center"> LOGIN DETAILS</h1>
+
+<div style="padding-left: 173px;" class="container mt-5 ">
+    
+{% if viewcon %} 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">User name</th>
+            <th scope="col">Email address</th>
+            
+            <th scope="col">Actions</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for adduser in viewcon %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{adduser.name}}</td>
+            <td>{{adduser.email}}</td>
+            <td>{{adduser.complainttype}}</td>
+            <!-- <td><a class="btn btn-danger" href="{%url 'admin_delete_user' user.id %}">Delete</a></td> -->
+            <td><a class="btn btn-danger" href="{%url 'con_delete_user' adduser.id %}">Delete</a></td>
+
+            <!-- <td> <button href="/delete_user/{{adduser.id}}" class="btn btn-danger">Delete</button></td>
+               -->
+          </tr>
+          
+          {% endfor %}
+          
+        </tbody>
+      </table>
+
+{% endif %}
+</div>
+
+
+{% endblock content %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>    <br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

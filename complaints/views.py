@@ -126,7 +126,7 @@ def admin_login(request):
         p =request.POST['pwd']
         user =auth.authenticate(username=u, password=p)
         try  :
-            if user.is_staff:
+            if user.is_superuser:
                 login(request,user)
                 error ="no"
             else:
@@ -370,6 +370,77 @@ def admin_delete_user(request, id):
         return redirect('/manageuser/')
     return render(request,"admin_delete_user.html")   
 
+def staff_delete_user(request, id):
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/manageuseri/')
+    return render(request,"staff_delete_user.html") 
+
+
+# def send_email(request):
+#     return redirect('regcomplaits')
+
+
+
+def con_staff(request):
+    username=request.session['username']
+    queryset = Regcomplaint.objects.filter(complainttype=username)
+    context={'viewcon': queryset}
+    return render(request, "con_staff.html",context)
+
+
+def plum_staff(request):
+    username=request.session['username']
+    queryset = Regcomplaint.objects.filter(complainttype=username)
+    context={'viewplum': queryset}
+    return render(request, "plum_staff.html",context)
+
+def elec_staff(request):
+    username=request.session['username']
+    queryset = Regcomplaint.objects.filter(complainttype=username)
+    context={'viewelec': queryset}
+    return render(request, "viewelec.html",context)
+
+def other_staff(request):
+    username=request.session['username']
+    queryset = Regcomplaint.objects.filter(complainttype=username)
+    context={'viewother': queryset}
+    return render(request, "other_staff.html",context)
+
+
+
+def con_delete_user(request, id):
+
+    if request.method=='POST':
+        user=Regcomplaint.objects.get(id=id)
+        user.delete()
+        return redirect('/con_staff/')
+    return render(request,"con_delete_user.html")
+
+def plum_delete_user(request, id):
+
+    if request.method=='POST':
+        user=Regcomplaint.objects.get(id=id)
+        user.delete()
+        return redirect('/plum_staff/')
+    return render(request,"plum_delete_user.html")
+
+def elec_delete_user(request, id):
+
+    if request.method=='POST':
+        user=Regcomplaint.objects.get(id=id)
+        user.delete()
+        return redirect('/elec_staff/')
+    return render(request,"elec_delete_user.html")
+
+def other_delete_user(request, id):
+
+    if request.method=='POST':
+        user=Regcomplaint.objects.get(id=id)
+        user.delete()
+        return redirect('/other_staff/')
+    return render(request,"other_delete_user.html")
 
 
 

@@ -5,9 +5,9 @@
 {% block content %}
 <h1 class="text-center"> Complaints</h1>
 
-<div style="padding-left: 173px;" class="container mt-5 ">
 
- 
+{% if viewother %}
+<div style="padding-left: 173px;" class="container mt-5 ">
     <table class="table">
         <thead>
           <tr>
@@ -51,7 +51,7 @@
           
         </tbody>
       </table>
-
+  {% endif %}    
     
 </div>
 

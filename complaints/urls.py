@@ -37,10 +37,19 @@ urlpatterns = [
     path('viewplum/', views.viewplum, name='viewplum'),
     path('viewcon/', views.viewcon, name='viewcon'),
     path('viewother/', views.viewother, name='viewother'),
+    path('con_staff/', views.con_staff, name='con_staff'),
+    path('elec_staff/', views.elec_staff, name='elec_staff'),
+    path('plum_staff/', views.plum_staff, name='plum_staff'),
+    path('other_staff/', views.other_staff, name='other_staff'),
+    path('con_delete_user<int:id>/', views.con_delete_user, name='con_delete_user'),
+    path('plum_delete_user<int:id>/', views.plum_delete_user, name='plum_delete_user'),
+    path('elec_delete_user<int:id>/', views.elec_delete_user, name='elec_delete_user'),
+    path('other_delete_user<int:id>/', views.other_delete_user, name='other_delete_user'),
     #path('delete_user/<id>', views.delete_user, name='delete_user'),
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
-
+    path('staff_delete_user/<int:id>',views.staff_delete_user,name='staff_delete_user'),
+    #path('send_email/', views.send_email, name='send_email'),
 
 
 
