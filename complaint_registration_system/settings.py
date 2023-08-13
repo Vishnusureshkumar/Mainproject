@@ -125,7 +125,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_DIR={
-    os.path.join(BASE_DIR,"public/static")
+    os.path.join(BASE_DIR,"public/static"),
+    os.path.join(BASE_DIR,"static/images"),
 }
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'public/static')
@@ -144,9 +145,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = ""
-# EMAIL_HOST_PASSWORD = ""
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "akhilskumar8055@gmail.com"
+EMAIL_HOST_PASSWORD = "xwhnttvtxqlbfnbd"

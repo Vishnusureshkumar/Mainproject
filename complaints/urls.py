@@ -49,7 +49,8 @@ urlpatterns = [
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
     path('staff_delete_user/<int:id>',views.staff_delete_user,name='staff_delete_user'),
-    #path('send_email/', views.send_email, name='send_email'),
+    path('send_email/', views.send_email, name='send_email'),
+    path('contactus/', views.Contactus, name='contactus'),
 
 
 

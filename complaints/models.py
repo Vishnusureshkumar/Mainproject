@@ -35,4 +35,10 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.feed_sub
+    
+
+    class Contact(models.Model):
+        name=name = models.CharField(max_length=15,null=True)
+        email=models.EmailField(max_length=100)
+        message=models.TextField(max_length=100) #feedback subject #feedback subject
 

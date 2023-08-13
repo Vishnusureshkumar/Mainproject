@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages,auth
 from .forms import NewUserForm #ServicesForm
-
+from .utils import send_email_to_client
 
 
 
@@ -378,8 +378,9 @@ def staff_delete_user(request, id):
     return render(request,"staff_delete_user.html") 
 
 
-# def send_email(request):
-#     return redirect('regcomplaits')
+def send_email(request):
+    send_email_to_client()
+    return redirect('/regcomplaints/')
 
 
 
@@ -447,3 +448,17 @@ def other_delete_user(request, id):
 
 
 
+def Contactus(request):
+    
+    if request.method == "POST":
+        data = request.POST
+        name=data.get('name')
+        email=data.get('email')
+        message=data.get('message')
+        Feedback.objects.create(name=name,email=email,
+                                     message=message, 
+                                    )  
+        Feedback(name=name,email=email, message=message)
+        messages.info(request,'Successfully Added your Feedback')
+        return redirect('/contact/')
+    return render(request,'contact.html')
