@@ -31,7 +31,7 @@ urlpatterns = [
     path('manageuser/', views.Manageuser, name='manageuser'),
     path('manageuseri/', views.Manageuseri, name='manageuseri'),
     path('viewcomp/', views.Viewcomp, name='viewcomp'),
-    path('viewstatus/', views.viewstatuses, name='viewstatuses'),
+    path('viewstatus/', views.viewstatus, name='viewstatuses'),
     path('adduseri/', views.Adduseri, name='adduseri'),
     path('viewcomplaints/', views.viewcomplaints, name='viewcomplaints'),
     path('viewplum/', views.viewplum, name='viewplum'),
@@ -49,8 +49,11 @@ urlpatterns = [
     path('viewfeedback/', views.Viewfeedback, name='viewfeedback'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
     path('staff_delete_user/<int:id>',views.staff_delete_user,name='staff_delete_user'),
-    path('send_email/', views.send_email, name='send_email'),
+    #path('send_email/', views.send_email, name='send_email'),
     path('contactus/', views.Contactus, name='contactus'),
+    path('admin_update/<id>/',views.admin_update,name='admin_update'),
+    path('admin_delete_comp/<id>/',views.admin_delete_comp,name='admin_delete_comp'),
+    path('staff_update_comp/<id>/',views.staff_update_comp,name='staff_update_comp'),
 
 
 

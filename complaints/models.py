@@ -16,7 +16,6 @@ class Regcomplaint(models.Model):
     flatblock=models.CharField(max_length=4,null=True)
     flatno=models.IntegerField(null=True)
     date =models.DateField()
-    
     email=models.EmailField(null=True)
     phoneno=models.IntegerField(null=True)
     Electricity='Electricity'
@@ -27,6 +26,8 @@ class Regcomplaint(models.Model):
     complainttitle =models.CharField(max_length=20)
     complaintmedia =models.ImageField(upload_to='images')
     complaintdescription =models.TextField(max_length=500)
+    STATUS =(("Solved",'Solved'),("InProgress", 'InProgress'),("Pending",'Pending'))
+    status=models.CharField(choices=STATUS,default="Pending",max_length=100)
 
 class Feedback(models.Model):
     name = models.CharField(max_length=15,null=True)
@@ -37,8 +38,13 @@ class Feedback(models.Model):
         return self.feed_sub
     
 
-    class Contact(models.Model):
-        name=name = models.CharField(max_length=15,null=True)
+class Contactus(models.Model):
+        name  = models.CharField(max_length=15,null=True)
         email=models.EmailField(max_length=100)
-        message=models.TextField(max_length=100) #feedback subject #feedback subject
+        message=models.TextField(max_length=100) 
+        #feedback subject #feedback subject
+
+        def __str__(self):
+            return self.name
+    
 

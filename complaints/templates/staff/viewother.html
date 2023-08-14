@@ -23,7 +23,7 @@
             <th scope="col">Complaint Description</th>
             <th scope="col">Media</th>
             <th scope="col">Status</th>
-            
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +44,8 @@
                 <img src="/media/{{i.complaintmedia}}" style="height: 100px;"></td>
             <!-- <td> <button href="/delete_user/{{adduser.id}}" class="btn btn-danger">Delete</button></td>
                -->
-               <td><a class="btn btn-success" href="">Update</a></td>
+               <td>{{i.status}}</td>
+               <td><a class="btn btn-danger" href="/staff_update_comp/{{i.id}}/">Update</a></td>
           </tr>
           
           {% endfor %}

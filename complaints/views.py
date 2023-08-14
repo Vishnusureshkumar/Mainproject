@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages,auth
 from .forms import NewUserForm #ServicesForm
-from .utils import send_email_to_client
+#from .utils import send_email_to_client
 
 
 
@@ -188,7 +188,7 @@ def Login_govt(request):
         user=authenticate(request, username=username, password=pass1)
         
         try  :
-            if user.is_staff:
+            if user.is_staff and not user.is_superuser:
                 login(request,user)
                 request.session['username'] = user.username
                 error ="no"
@@ -255,15 +255,17 @@ def Manageuser(request):
     
     queryset =User.objects.all()
     context ={'Adduser':queryset}  
-    return render(request,'admin/manageuser.html',context)
+    return render(request, 'admin/manageuser.html',context)
 
 def Viewcomp(request):
     queryset =Regcomplaint.objects.all()
     context ={'regcomplaints':queryset}  
     return render(request,'admin/viewcomp.html',context)
 
-def viewstatuses(request):
-    return render(request,'admin/viewstatus.html')
+def viewstatus(request):
+    queryset =Regcomplaint.objects.all()
+    context ={'regcomplaints':queryset}  
+    return render(request,'admin/viewstatus.html',context)
 
 def Viewfeedback(request):
     queryset=Feedback.objects.all()
@@ -370,6 +372,26 @@ def admin_delete_user(request, id):
         return redirect('/manageuser/')
     return render(request,"admin_delete_user.html")   
 
+def admin_delete_comp(request, id):
+    if request.method=='POST':
+        user=Regcomplaint.objects.get(id=id)
+        user.delete()
+        return redirect('/viewcomp/')
+    return render(request,"admin_delete_comp.html")   
+
+def admin_update(request, id):
+        queryset=Regcomplaint.objects.get(id=id)
+        if request.method == 'POST':
+            status=request.POST['status']
+            queryset.status=status
+            queryset.save()
+            return redirect('/viewstatus/')
+
+        context={'update':queryset}
+            
+        return render(request, 'admin_update.html',context)
+
+
 def staff_delete_user(request, id):
     if request.method=='POST':
         user=User.objects.get(id=id)
@@ -378,9 +400,9 @@ def staff_delete_user(request, id):
     return render(request,"staff_delete_user.html") 
 
 
-def send_email(request):
-    send_email_to_client()
-    return redirect('/regcomplaints/')
+# def send_email(request):
+#     send_email_to_client()
+#     return redirect('/regcomplaints/')
 
 
 
@@ -443,7 +465,17 @@ def other_delete_user(request, id):
         return redirect('/other_staff/')
     return render(request,"other_delete_user.html")
 
+def staff_update_comp(request, id):
+        queryset=Regcomplaint.objects.get(id=id)
+        if request.method == 'POST':
+            status=request.POST['status']
+            queryset.status=status
+            queryset.save()
+            return redirect('/viewother/')
 
+        context={'update':queryset}
+            
+        return render(request, 'staff/staff_update_comp.html',context)
 
 
 
@@ -455,10 +487,9 @@ def Contactus(request):
         name=data.get('name')
         email=data.get('email')
         message=data.get('message')
-        Feedback.objects.create(name=name,email=email,
+        Contactus.objects.create(name=name,email=email,
                                      message=message, 
                                     )  
-        Feedback(name=name,email=email, message=message)
-        messages.info(request,'Successfully Added your Feedback')
+        Contactus(name=name,email=email, message=message)
         return redirect('/contact/')
     return render(request,'contact.html')

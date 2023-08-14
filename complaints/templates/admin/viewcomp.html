@@ -4,12 +4,12 @@
 
     
 {% block content %}
-<div class="container w-50 my-5">
+<div class="container ">
  
-</div>
+
 <h1 class="text-center"> Complaint Status</h1>
-<hr>
-<div style="padding-left: 173px;" class="container mt-5 ">
+
+<div style="padding-left: 100px;" class="container mt-5 ">
     
  
     <table class="table">
@@ -26,7 +26,8 @@
             <th scope="col">Complaint Subject</th>
             <th scope="col">Complaint Description</th>
             <th scope="col">Media</th>
-            <th scope="col">Status</th>
+  
+            <th scope="col">Action</th>
             
           </tr>
         </thead>
@@ -46,6 +47,8 @@
             <td>{{Regcomplaint.complaintdescription}}</td>
             <td>
               <img src="/media/{{Regcomplaint.complaintmedia}}" style="height: 100px;"></td>
+              
+              <td><a class="btn btn-danger" href="/admin_delete_comp/{{Regcomplaint.id}}/">Delete</a></td>
           </tr>
           
           {% endfor %}
@@ -55,7 +58,7 @@
 
     
 </div>
-
+</div>
   
 
 {% endblock content %}

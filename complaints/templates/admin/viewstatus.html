@@ -1,10 +1,65 @@
 {% include 'base.html' %}
 {% include 'adminnav.html' %}
 {% include 'adminsidebar.html' %} 
+
+    
 {% block content %}
+<div class="container w-50 my-5">
+ 
+</div>
+<h1 class="text-center"> Complaint Status</h1>
 
+<div style="padding-left: 100px;" class="container mt-5 ">
+    
+ 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Flat Block</th>
+            <th scope="col">Flat Number</th>
+            <th scope="col">Date</th>
+            <th scope="col">Email address</th>
+            <th scope="col">Phone Numer</th>
+            <th scope="col">Complaint Type</th>
+            <th scope="col">Complaint Subject</th>
+            <th scope="col">Complaint Description</th>
+            <th scope="col">Media</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for Regcomplaint in regcomplaints %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{Regcomplaint.name}}</td>
+            <td>{{Regcomplaint.flatblock}}</td>
+            <td>{{Regcomplaint.flatno}}</td>
+            <td>{{Regcomplaint.date}}</td>
+            <td>{{Regcomplaint.email}}</td>
+            <td>{{Regcomplaint.phoneno}}</td>
+            <td>{{Regcomplaint.complainttype}}</td>
+            <td>{{Regcomplaint.complainttitle}}</td>
+            <td>{{Regcomplaint.complaintdescription}}</td>
+            <td>
+              <img src="/media/{{Regcomplaint.complaintmedia}}" style="height: 100px;"></td>
+              <td>{{Regcomplaint.status}}</td>
+              <td><a class="btn btn-danger" href="/admin_update/{{Regcomplaint.id}}/">Update</a></td>
+          </tr>
+          
+          {% endfor %}
+          
+        </tbody>
+      </table>
 
-{% endblock content %}
-<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</div>
+
+  
+
+{% endblock content %}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% include 'footer.html' %}
