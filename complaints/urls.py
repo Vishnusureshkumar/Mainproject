@@ -31,6 +31,7 @@ urlpatterns = [
     path('manageuser/', views.Manageuser, name='manageuser'),
     path('manageuseri/', views.Manageuseri, name='manageuseri'),
     path('viewcomp/', views.Viewcomp, name='viewcomp'),
+    path('profile/', views.Profile, name='profile'),
     path('viewstatus/', views.viewstatus, name='viewstatuses'),
     path('adduseri/', views.Adduseri, name='adduseri'),
     path('viewcomplaints/', views.viewcomplaints, name='viewcomplaints'),

@@ -208,7 +208,8 @@ def Logout_staff(request):
 
 
 
-def LoginPage(request):   
+def LoginPage(request):  
+     
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -493,3 +494,10 @@ def Contactus(request):
         Contactus(name=name,email=email, message=message)
         return redirect('/contact/')
     return render(request,'contact.html')
+
+
+def Profile(request):
+    username=request.session['username']
+    queryset=User.objects.filter(username=username)
+    context={'profile':queryset}
+    return render(request,'profile.html',context)
